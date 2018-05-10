@@ -1,37 +1,24 @@
 
 
-var Letter = function (character, guessesString) {
+var Letter = function (character) {
     this.character = character;
     this.isLetterGuessed = false;
-    console.log (this.isLetterGuessed)
+    // console.log("hellooooo")
 
-    this.letterReturn = function (character) {
+
+    this.display = function () {
         if (this.isLetterGuessed) {
-            console.log(this.character)
+           return(this.character)
         } else {
-            console.log("_");
+            return("_");
         }
-
     }
 
-    this.letterCheck = function (character, guessesString) {
-        console.log("guessed: " + guessesString)
-        console.log("character: " + character)
-        if (guessesString === character) {
+    this.letterGuess = function(guess) {
+        if (guess === this.character) {
             this.isLetterGuessed = true;
-            console.log(this.isLetterGuessed)
-
-            return true;
-
-
-        } else {
-       
-            this.isLetterGuessed = false;
-
-        }
+        } 
     }
-
-
 }
 
 

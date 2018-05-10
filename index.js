@@ -4,15 +4,11 @@ var Word = require("./Word.js");
 
 var guesses = 10;
 
-var wordsToGuess = ["Dont Speak", "Im Just A Girl", "Its My Life", "Spiderwebs"];
+var wordsToGuess = ["dont speak", "im just a girl", "its my life", "spiderwebs"];
 
 var randomWord = wordsToGuess[Math.floor(Math.random() * wordsToGuess.length)];
 
-var wordToString = randomWord.toString();
-
-var chosenWord = new Word(wordToString);
-
-var splitIntoLetters = wordToString.split('');
+var chosenWord = new Word(randomWord);
 
 var guessWord = function () {
 
@@ -25,18 +21,11 @@ var guessWord = function () {
             }
         ]).then(function (guessedLetter) {
 
-            var guessesLetter = JSON.stringify(guessedLetter);
-
-            var guessesString = guessesLetter.substring(8, 9);
-
-            var guessALetter = new Word(wordToString);
-
-            guessALetter.letterGuess(wordToString, guessesString);
-            
-            var underscoreOrLetter = new Word(wordToString, guessesString);
-            underscoreOrLetter.returnString();
-
+            var guess = guessedLetter.txt;
+            chosenWord.checkGuess(guess);
+            console.log(chosenWord.display());
             guesses--;
+            console.log(guesses)
             guessWord();
         });
 
