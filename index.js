@@ -20,14 +20,21 @@ var guessWord = function () {
 
         inquirer.prompt([
             {
-                name: "guess",
+                name: "txt",
                 message: "Guess a letter!"
             }
         ]).then(function (guessedLetter) {
 
-            var guessedLetter = new Word(wordToString, guessedLetter);
+            var guessesLetter = JSON.stringify(guessedLetter);
 
-            guessedLetter.letterGuess(guessedLetter);
+            var guessesString = guessesLetter.substring(8, 9);
+
+            var guessALetter = new Word(wordToString);
+
+            guessALetter.letterGuess(wordToString, guessesString);
+            
+            var underscoreOrLetter = new Word(wordToString, guessesString);
+            underscoreOrLetter.returnString();
 
             guesses--;
             guessWord();
