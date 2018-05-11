@@ -20,7 +20,7 @@ var Letter = function (character) {
         else if (this.character == "-") {
             return ("-")
         }
-        
+
         else if (this.isLetterGuessed === false) {
             return ("_");
         }
@@ -32,7 +32,5 @@ var Letter = function (character) {
         }
     }
 }
-
-
 
 module.exports = Letter;

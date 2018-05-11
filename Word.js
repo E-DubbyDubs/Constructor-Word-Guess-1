@@ -22,8 +22,6 @@ var Word = function (word) {
         }
     }
 
-
-
     this.display = function () {
         var lettersStore = '';
         for (var i = 0; i < this.letters.length; i++) {
@@ -34,7 +32,6 @@ var Word = function (word) {
 
 
 }
-
 
 module.exports = Word;
 

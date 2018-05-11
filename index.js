@@ -44,6 +44,8 @@ function guessWord() {
             if (randomWord.toLowerCase().indexOf(guess.toLowerCase()) === -1) {
                 guesses--;
                 console.log("INCORRECT! " + guesses + " guesses remaining")
+            } else {
+                console.log("CORRECT!")
             }
 
             if (randomWord === chosenWord.display()) {
@@ -120,8 +122,6 @@ function winGame() {
         })
 
 }
-
-
 
 chooseRandomWord();
 guessWord();
