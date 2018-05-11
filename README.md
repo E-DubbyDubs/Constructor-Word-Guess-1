@@ -1,6 +1,6 @@
 # Advanced JavaScript Assignment: Constructor Word Guess
 
-Advanced JavaScript Assignment: Constructor Hangman (Word Guess) that utilizes constructors, objects and Node.js
+Advanced JavaScript Assignment: Constructor Hangman (Word Guess) that utilizes constructors, the NPM Inquirer.js package, objects, and Node.js
 
 * Theme: No Doubt songs (because why not?)
 
