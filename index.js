@@ -5,10 +5,14 @@ var Word = require("./Word.js");
 var guesses = 10;
 var points = 0;
 
-var wordsToGuess = ["Don't Speak", "I'm Just a Girl", "It's My Life", "Spiderwebs", "Hey Baby", "Tragic Kingdom", "Ex-Girlfriend", "Simple Kind Of Life", "New", "Trapped In A Box"];
+var wordsToGuess = ["Don't Speak", "I'm Just a Girl", "It's My Life", "Spiderwebs", "Hey Baby", "Tragic Kingdom", "Ex-Girlfriend", "Simple Kind Of Life", "New", "Trapped In A Box", "Rock Steady"];
 
 var randomWord;
 var chosenWord;
+
+function startGame() {
+    console.log("It's time to guess the 'No Doubt' songs!");
+}
 
 function chooseRandomWord() {
 
@@ -19,14 +23,15 @@ function chooseRandomWord() {
 
 function guessWord() {
 
-    if (guesses > 0 & points < 5) {
+    if (guesses > 0 && points < 5) {
 
         console.log(chosenWord.display());
+    
 
         inquirer.prompt([
             {
                 name: "txt",
-                message: "Pick a letter to guess the 'No Doubt' song!",
+                message: "Guess a letter!",
                 validate: function (str) {
                     if (str.length != 1) return false;
                     var regEx = new RegExp("^[a-zA-Z\s]{1,1}$");
@@ -44,8 +49,11 @@ function guessWord() {
             if (randomWord.toLowerCase().indexOf(guess.toLowerCase()) === -1) {
                 guesses--;
                 console.log("INCORRECT! " + guesses + " guesses remaining")
-            } else {
+            } 
+            else {
+                if (points < 5) {
                 console.log("CORRECT!")
+                }
             }
 
             if (randomWord === chosenWord.display()) {
@@ -70,7 +78,6 @@ function guessWord() {
             guessWord();
 
         });
-
     }
 
 }
@@ -88,13 +95,14 @@ function loseGame() {
         .then(function (inquirerResponse) {
             if (inquirerResponse.confirm) {
                 guesses = 10;
+                points = 0;
                 chooseRandomWord();
+                guessWord();
             }
             else {
                 console.log("K fine.. 'DON'T SPEAK' to me ever again! lolzzzz")
                 process.exit();
             }
-            guessWord();
         })
 }
 
@@ -123,5 +131,6 @@ function winGame() {
 
 }
 
+startGame();
 chooseRandomWord();
 guessWord();
