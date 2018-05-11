@@ -62,7 +62,7 @@ function guessWord() {
                 points++;
 
                 if (points < 5) {
-                    console.log("CORRECT! Next word!");
+                    console.log("CORRECT! Next song!");
                     chooseRandomWord();
                 }
 
