@@ -22,6 +22,8 @@ var Word = function (word) {
         }
     }
 
+
+
     this.display = function () {
         var lettersStore = '';
         for (var i = 0; i < this.letters.length; i++) {

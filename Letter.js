@@ -5,16 +5,29 @@ var Letter = function (character) {
     this.isLetterGuessed = false;
 
     this.display = function () {
-        if (this.isLetterGuessed) {
-            return (this.character)
-        } else {
+        if (this.character == ' ') {
+            return (' ');
+        }
 
+        else if (this.isLetterGuessed) {
+            return (this.character)
+        }
+
+        else if (this.character == "'") {
+            return ("'")
+        }
+
+        else if (this.character == "-") {
+            return ("-")
+        }
+        
+        else if (this.isLetterGuessed === false) {
             return ("_");
         }
     }
 
     this.letterGuess = function (guess) {
-        if (guess === this.character) {
+        if (guess.toLowerCase() === this.character.toLowerCase()) {
             this.isLetterGuessed = true;
         }
     }
