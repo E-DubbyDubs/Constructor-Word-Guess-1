@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.1",
+    "figlet": "^1.2.0",
     "inquirer": "^5.2.0"
   }
 }

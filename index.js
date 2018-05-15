@@ -1,17 +1,19 @@
 var inquirer = require("inquirer");
 
 var Word = require("./Word.js");
+var figlet = require('figlet');
+var chalk = require('chalk');
 
 var guesses = 10;
 var points = 0;
 
 var wordsToGuess = ["Don't Speak", "I'm Just a Girl", "It's My Life", "Spiderwebs", "Hey Baby", "Tragic Kingdom", "Ex-Girlfriend", "Simple Kind Of Life", "New", "Trapped In A Box", "Rock Steady"];
-
 var randomWord;
 var chosenWord;
 
 function startGame() {
-    console.log("It's time to guess the 'No Doubt' songs!");
+
+    console.log(chalk.blue("It's time to guess the 'No Doubt' songs!"));
 }
 
 function chooseRandomWord() {
@@ -48,11 +50,11 @@ function guessWord() {
 
             if (randomWord.toLowerCase().indexOf(guess.toLowerCase()) === -1) {
                 guesses--;
-                console.log("INCORRECT! " + guesses + " guesses remaining")
+                console.log(chalk.red("INCORRECT! " + guesses + " guesses remaining"))
             } 
             else {
                 if (points < 5) {
-                console.log("CORRECT!")
+                console.log(chalk.green("CORRECT!"))
                 }
             }
 
@@ -62,7 +64,7 @@ function guessWord() {
                 points++;
 
                 if (points < 5) {
-                    console.log("CORRECT! Next song!");
+                    console.log(chalk.green("CORRECT! Next song!"));
                     chooseRandomWord();
                 }
 
@@ -83,7 +85,7 @@ function guessWord() {
 }
 
 function loseGame() {
-    console.log("GAME OVER!");
+    console.log(chalk.red("GAME OVER!"));
     inquirer.prompt([
         {
             name: "confirm",
@@ -100,14 +102,24 @@ function loseGame() {
                 guessWord();
             }
             else {
-                console.log("K fine.. 'DON'T SPEAK' to me ever again! lolzzzz")
+                console.log(chalk.blue("K fine.. 'DON'T SPEAK' to me ever again! lolzzzz"));
                 process.exit();
             }
         })
 }
 
 function winGame() {
-    console.log("YOU WIN!");
+
+    figlet('YOU WIN!', function(err, data) {
+        if (err) {
+            console.log('Something went wrong...');
+            console.dir(err);
+            return;
+        }
+        console.log(data)
+    })
+
+
     inquirer.prompt([
         {
             name: "confirm",
@@ -124,7 +136,7 @@ function winGame() {
                 guessWord();
             }
             else {
-                console.log("K fine.. It's YOUR life.")
+                console.log(chalk.blue("K fine.. It's YOUR life."))
                 process.exit();
             }
         })
